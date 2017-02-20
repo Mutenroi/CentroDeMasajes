@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record model="ir.actions.act_window" id="nacionalidades_list_action">
+        <field name="name">Nacionalidades</field>
+        <field name="res_model">masaje.nacionalidad</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="arch" type="xml">
+            <tree string="Listado de nacionalidades">
+                <field name="name" />
+                <field name="masaje_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empleados_list_action">
+        <field name="name">Empleados</field>
+        <field name="res_model">masaje.empleado</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="arch" type="xml">
+            <tree string="Listado de empleados">
+                <field name="name" />
+                <field name="tipo"/>
+                <field name="empleado_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem name="Centro de Masajes" id="masaje_menu_root"/>
+
+    <menuitem name="Nacionalidades" id="masaje_menu_nacionalidades" parent="masaje_menu_root"/>
+    <menuitem name="Listado de nacionalidades" id="masaje_list_nacionalidades" parent="masaje_menu_nacionalidades"
+              action="nacionalidades_list_action"/>
+    
+    <menuitem name="Empleados" id="masaje_menu_empleados" parent="masaje_menu_root"/>
+    <menuitem name="Listado de empleados" id="masaje_list_empleados" parent="masaje_menu_empleados"
+              action="empleados_list_action"/>
+
+
+        <record model="ir.ui.view" id="nacionalidad_form_view">
+            <field name="name">nacionalidad.form</field>
+            <field name="model">masaje.nacionalidad</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de nacionalidades">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="empleado_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="empleado_form_view">
+            <field name="name">empleado.form</field>
+            <field name="model">masaje.empleado</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de empleados">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="tipo"/>
+                            <field name="nacionalidad_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+            
+  </data>
+</openerp>
